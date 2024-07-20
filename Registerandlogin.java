@@ -16,7 +16,7 @@ public class Registerandlogin { // สร้าง class ชื่อว่า R
         String username = ""; // ประกาศค่าตัวแปร username เพื่อเก็บข้อมูลชื่อผู้ใช้งาน
         String password = ""; // ประกาศค่าตัวแปร password เพื่อเก็บรหัสของผู้ใช้งาน
 
-        System.out.print("\nต้องการทำการหรือไม่? Y/N: "); /*
+        System.out.print("\nWould you like to do it or not? Y/N: "); /*
                                                            * ส่งออกเพื่อถาม user
                                                            * ว่าต้องการเข้าทำการในโปรแกรมนี้ใช่หรือไม่
                                                            */
@@ -25,10 +25,10 @@ public class Registerandlogin { // สร้าง class ชื่อว่า R
         if (TF.equals("Y") || TF.equals("N")) { // ถ้าเข้าเงื่อนไขนี้จะเริ่มการทำงาน
 
             while (TF.equals("Y")) { // เข้าเงื่อนไขเมื่อตัวแปร TF มีค่าเท่ากับ Y
-                System.out.println("\nเลือกทำการ"); // ส่งออกข้อความให้ user
-                System.out.println("1: เข้าสู่ระบบ"); // ส่งออกตัวเลือกให้ user
-                System.out.println("2: ลงทะเบียน"); // ส่งออกตัวเลือกให้ user
-                System.out.print(" \nคำตอบคุณคือ(ตอบเป็นตัวเลข): "); // กรอกคำตอบ
+                System.out.println("\nSelect to do."); // ส่งออกข้อความให้ user
+                System.out.println("1: Login"); // ส่งออกตัวเลือกให้ user
+                System.out.println("2: Register"); // ส่งออกตัวเลือกให้ user
+                System.out.print(" \nYour answer: "); // กรอกคำตอบ
                 int choice = input.nextInt(); // รับค่าตัวเลือกที่เป็นจำนวนเต็มจาก user
                 input.nextLine(); // อ่านข้อมูลเพิ่มเติมหลังจากอ่านตัวเลข
 
@@ -37,9 +37,9 @@ public class Registerandlogin { // สร้าง class ชื่อว่า R
                     switch (choice) { // ใช้ switch เพื่อเลือก 1 ในตัวเลือกจากทั้งหมด
 
                         case 1: // เคสที่ 1 เป็นการ log in
-                            System.out.print("\nชื่อผู้ใช้: "); // กรอก username
+                            System.out.print("\nUsername: "); // กรอก username
                             username = input.nextLine(); // รับค่า username จาก user
-                            System.out.print("รหัสผ่าน: "); // กรอก password
+                            System.out.print("Password: "); // กรอก password
                             password = input.nextLine(); // รับค่า password จาก user
 
                             for (int i = 0; i < userCount; i++) { /*
@@ -47,17 +47,17 @@ public class Registerandlogin { // สร้าง class ชื่อว่า R
                                                                    * ตรงกับที่มีอยู่ในระบบจากการลงทะเบียนหรือไม่
                                                                    */
                                 if (userDatabase[i][0].equals(username) && userDatabase[i][1].equals(password)) {
-                                    System.out.println("\nเข้าสู่ระบบสำเร็จ!\n"); /*
+                                    System.out.println("\nLogin successful!\n"); /*
                                                                                    * ถ้าตรงเงื่อนไขจะขึ้นว่า log in
                                                                                    * สำเร็จ
                                                                                    */
-                                    System.out.println("welcome\n");
+                                    System.out.println("Welcome\n");
                                     return; // จบการทำงานของโปรแกรม
                                 }
 
                             }
                             System.out.println(
-                                    "\n* เข้าสู่ระบบไม่สำเร็จ เนื่องจากไม่พบบัญชีผู้ใช้ กรุณาลองอีกครั้ง *"); /*
+                                    "\n* Login failed Because the user account was not found Please try again. *"); /*
                                                                                                                * ถ้าไม่เข้าเงืื่อนไข
                                                                                                                * จะขึ้นว่า
                                                                                                                * log in
@@ -72,7 +72,7 @@ public class Registerandlogin { // สร้าง class ชื่อว่า R
                             break;
 
                         case 2: // เคสที่ 2 เป็นการ Register ก่อนเข้า log in เพื่อเก็บข้อมูลเข้าสู่ Array
-                            System.out.print("\nกรุณาใส่ชื่อผู้ใช้ที่ต้องการลงทะเบียน: "); // รับค่า username จาก user
+                            System.out.print("\nUsername: "); // รับค่า username จาก user
                             username = input.nextLine();
                             for (int i = 0; i < userCount; i++) { /*
                                                                    * เข้า Loop เพื่อเช็คว่า username ที่ user
@@ -83,9 +83,9 @@ public class Registerandlogin { // สร้าง class ชื่อว่า R
                                                                             * มีผู้ใช้ชื่อนี้แล้วเพื่อป้องกันข้อมูลซ้ำเพราะจะส่งผลต่อ
                                                                             * password
                                                                             */
-                                    System.out.println("\n* มีผู้ใช้ชื่อนี้แล้ว กรุณาใช้ชื่ออื่น *");
+                                    System.out.println("\n* This username is already in use. Please use another name. *");
                                     do { // เข้า Loop ให้กรอก username ใหม่ที่ไม่ซ้ำ
-                                        System.out.print("\nกรุณาใส่ชื่อผู้ใช้ที่ต้องการลงทะเบียน: ");
+                                        System.out.print("\nUsername: ");
                                         username = input.nextLine();
 
                                     } while (userDatabase[i][0].equals(username)); /*
@@ -96,32 +96,32 @@ public class Registerandlogin { // สร้าง class ชื่อว่า R
 
                             }
 
-                            System.out.print("รหัสผ่าน: "); // ตั้งรหัสเพื่อเข้าสู่ระบบ
+                            System.out.print("Password: "); // ตั้งรหัสเพื่อเข้าสู่ระบบ
                             password = input.nextLine();
 
                             userDatabase[userCount][0] = username; // เก็บ username ใน column แรก คือ index [0]
                             userDatabase[userCount][1] = password; // เก็บ password ใน column ที่สอง คือ index [1]
                             userCount++; // เพิ่มค่าจำนวนผู้ใช้งาน
-                            System.out.println("\nลงทะเบียนสำเร็จ!"); // เมื่อกรอกครบหมดแล้วจะขึ้นว่า ลงทะเบียนสำเร็จ
+                            System.out.println("\nSuccessfully registered!"); // เมื่อกรอกครบหมดแล้วจะขึ้นว่า ลงทะเบียนสำเร็จ
                             break;
 
                         default: // user กรอกไม่ตรงกับเคสใด ๆ จะทำการออกจากโปรแกรมทันที
-                            System.out.println("\nออกจากโปรแกรม\n");
+                            System.out.println("\nExit the program\n");
                             return; // จบการทำงานของโปรแกรม
                     }
                 } else {
-                    System.err.println("\n*** กรุณาเลือก 1 หรือ 2 ***"); /*
+                    System.err.println("\n*** Please select 1 or 2. ***"); /*
                                                                           * ถ้าไม่เข้าเงื่อนไข ที่เลือก ระหว่าง 1 กับ 2
                                                                           * ให้ print คำสั่งนี้ และทำการตอบใหม่
                                                                           */
                 }
             }
             if (TF.equals("N")) { // เข้าเงื่อนไขเมื่อตัวแปร TF มีค่าเท่ากับ N
-                System.out.println("\nออกจากโปรแกรม\n");
+                System.out.println("\nExit the program\n");
                 return; // จบการทำงานของโปรแกรม
             }
         } else {
-            System.err.println("\n*** ออกจากระบบเพราะตอบไม่ตรงคำถาม ***\n");
+            System.err.println("\n*** Log out because the question was not answered correctly. ***\n");
 
         }
     }
